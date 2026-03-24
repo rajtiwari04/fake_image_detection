@@ -1,0 +1,124 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Enhanced Color Palette */
+    --c-bg:       #030711;
+    --c-surface:  #0f172a;
+    --c-brand:    #0ea5e9;
+    --c-violet:   #8b5cf6;
+    --c-text:     #f8fafc;
+    --c-muted:    #64748b;
+  }
+
+  * {
+    @apply border-white/5;
+    box-sizing: border-box;
+  }
+
+  body {
+    @apply bg-[#030711] text-slate-200 font-body antialiased;
+    background-image: 
+      radial-gradient(at 0% 0%, rgba(14, 165, 233, 0.05) 0px, transparent 50%),
+      radial-gradient(at 100% 0%, rgba(139, 92, 246, 0.05) 0px, transparent 50%);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* Custom Scrollbar for the Archive look */
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    @apply bg-transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    @apply bg-surface-800 rounded-full hover:bg-brand-500/50 transition-colors;
+  }
+}
+
+@layer components {
+  /* Tactical Glass Card */
+  .glass {
+    @apply relative overflow-hidden backdrop-blur-xl bg-surface-900/40 border border-white/10 shadow-2xl;
+  }
+
+  .glass-morph {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.01) 100%);
+    @apply backdrop-blur-md border border-white/10;
+  }
+
+  /* Interactive Button System */
+  .btn-primary {
+    @apply relative overflow-hidden px-8 py-3 rounded-2xl font-display font-bold text-white
+           bg-brand-500 hover:shadow-[0_0_20px_rgba(14,165,233,0.4)] active:scale-95
+           transition-all duration-300 focus:outline-none ring-offset-[#030711];
+  }
+
+  .btn-outline {
+    @apply px-8 py-3 rounded-2xl font-display font-bold
+           border border-white/10 text-slate-300
+           hover:bg-white/5 hover:text-white hover:border-white/20
+           active:scale-95 transition-all duration-300;
+  }
+
+  /* Cybernetic Inputs */
+  .input {
+    @apply w-full px-5 py-3.5 rounded-2xl bg-surface-950/50 border border-white/5
+           text-white placeholder-slate-600 font-body shadow-inner
+           focus:outline-none focus:border-brand-500/50 focus:ring-1 focus:ring-brand-500/50
+           transition-all duration-300;
+  }
+
+  /* Status Badges */
+  .badge-fake {
+    @apply inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-[10px] font-bold tracking-widest
+           bg-danger-500/10 text-danger-400 border border-danger-500/20 shadow-[0_0_15px_rgba(239,68,68,0.1)];
+  }
+  
+  .badge-real {
+    @apply inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-[10px] font-bold tracking-widest
+           bg-success-500/10 text-success-400 border border-success-500/20 shadow-[0_0_15px_rgba(34,197,94,0.1)];
+  }
+}
+
+@layer utilities {
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-brand-400 via-violet-400 to-brand-400 bg-[length:200%_auto] animate-gradient;
+  }
+
+  /* Neural Background Grid */
+  .bg-grid {
+    background-size: 40px 40px;
+    background-image: 
+      linear-gradient(to right, rgba(255,255,255,0.02) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(255,255,255,0.02) 1px, transparent 1px);
+  }
+
+  /* Keyframe Animations */
+  @keyframes scan {
+    0% { transform: translateY(-100%); opacity: 0; }
+    50% { opacity: 1; }
+    100% { transform: translateY(1000%); opacity: 0; }
+  }
+
+  @keyframes gradient {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+
+  .animate-scan {
+    animation: scan 3s linear infinite;
+  }
+
+  .animate-gradient {
+    animation: gradient 6s ease infinite;
+  }
+
+  .animate-pulse-slow {
+    animation: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+}
