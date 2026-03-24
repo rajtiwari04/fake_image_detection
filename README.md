@@ -2,7 +2,7 @@
 
 A full-stack AI-powered web application that detects whether an uploaded image is **REAL** or **FAKE (deepfake / manipulated)** using a trained CNN model.
 
-Built as a college final-year / capstone project using the **MERN stack + Python Flask + TensorFlow**.
+
 
 ---
 
